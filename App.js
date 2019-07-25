@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import BodyText from './src/elements/BodyText';
-import MemoDetailScreen from './src/screens/MemoDetailScreen';
+import SignupScreen from './src/screens/SignupScreen';
 import Appbar from './src/components/Appbar';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Appbar/>
-      <MemoDetailScreen/>
+      <SignupScreen/>
       
     </View>
   );
