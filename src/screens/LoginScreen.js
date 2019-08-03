@@ -5,8 +5,8 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends React.Component{
     state = {
-        email:'user3@example.com',
-        password:'abcdefg'
+        email:'',
+        password:''
     }
 
     handleSubmit(){
