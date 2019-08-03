@@ -25,7 +25,6 @@ class CircleButton extends React.Component{
     
     render(){
         const {name, style, color, onPress} = this.props;
-
         let bgColor = '#3EC966';
         let textColor = '#fff';
 

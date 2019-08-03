@@ -1,17 +1,30 @@
 import React from 'react';
 import {StyleSheet, View, TextInput, Button,TouchableHighlight, Text} from 'react-native';
 import firebase from 'firebase';
+import { StackActions, NavigationActions } from 'react-navigation';
+
 
 class SignupScreen extends React.Component{
     state={
-        email:'',
-        password:'',
+        email:'user4@example.com',
+        password:'abcdefg',
     }
 
     handleSubmit(){
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .catch((error)=>{
-            console.log(error);
+        .then(()=>{
+            this.props.navigation.navigate('Home');
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Home' }),
+                    
+                ],
+            });
+            this.props.navigation.dispatch(resetAction);
+        })
+        .catch(()=>{
+            
         });
     }
 
@@ -22,14 +35,14 @@ class SignupScreen extends React.Component{
                 <TextInput
                     style={styles.input}
                     value={this.state.email}
-                    onChange={(text) => {this.setState({email:text});}}
+                    onChangeText={(text) => {this.setState({email:text});}}
                     autoCapitalize='none'
                     autoCorrect={false}
                     placeholder='Email Adress'/>
                 <TextInput
                     style={styles.input}
                     value={this.state.password}
-                    onChange={(text) => {this.setState({password:text});}}
+                    onChangeText={(text) => {this.setState({password:text});}}
                     autoCapitalize='none'
                     autoCorrect={false}
                     placeholder='Password'
